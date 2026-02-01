@@ -1,0 +1,65 @@
+<h1 align="center">SESAMI</h1>
+
+<h4 align="center">
+
+</h4>              
+
+**SESAMI**: 
+
+[![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads) [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/mtap-research/PACMAN-charge/LICENSE)![Build Status](https://img.shields.io/badge/build-passing-brightgreen) [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sxmzhaogb@gmail.com) [![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)]() [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)]()          
+
+
+# Usage
+
+```python      
+from SESAMI.bet import fitbet
+
+BET_dict, BET_ESW_dict = fitbet(csv_file="example.csv", columns=["Pressure","Loading"],
+                                            adsorbate="N2", p0=1e5, T=77,
+                                            R2_cutoff=0.9995, R2_min=0.998,
+                                            font_size=12, font_type="DejaVu Sans",
+                                            legend=True, dpi=600, save_fig=True, verbose=False)
+print(BET_dict, BET_ESW_dict)
+```
+
+*   csv_file: N2 isotherm csv file
+*   columns: [Pressure, Loading], 2 columns, one for rpessure (unit: Pa), one for uptake (unit: mmol/g)
+*   adsorbate: N2, Ar or other
+*   p0: if other
+*   T:  test temperature if other
+*   R2_cutoff (default: 0.9995): The value of R2 beyond which we deem R2 ceases to have a bearing on the goodness of the linear region.                                                                            
+*   R2_min (default: 0.998): R2 value a chosen region must have to be termed *linear*                       
+*   font_size: word size in figure
+*   font_type: word type in figure
+*   legend: with legend in figure or not
+*   dpi: dpi in figure
+*   save_fig: save png or not (local folder)
+*   verbose: print detail or not
+                                                        
+```python
+from SESAMI.predict import betml
+
+MLBET = betml(csv_file="example.csv", columns=["Pressure","Loading"], verbose=False)
+print(MLBET) 
+```                             
+
+*   csv_file: N2 isotherm csv file, we recommend the columns name of pressure and uptake is *Pressure* and *Loading*, and the 1st column should be pressure with unit as *Pa* and 2nd column should be uptake with unit as *mmol/g*   
+*   columns: [Pressure, Loading], 2 columns, one for rpessure (unit: Pa), one for uptake (unit: mmol/g)                        
+*   verbose: print detail or not                                          
+
+
+# Website
+[SESAMI-APP](https://sesami-web.org/)       
+
+# Reference
+SESAMI-APP: [SESAMI APP: An Accessible Interface for Surface Area Calculation of Materials from Adsorption Isotherms](https://joss.theoj.org/papers/10.21105/joss.05429)               
+SESAMI 1.0: [Surface Area Determination of Porous Materials Using the Brunauer-Emmett-Teller (BET) Method: Limitations and Improvements](https://doi.org/10.1021/acs.jpcc.9b02116)               
+SESAMI 2.0 (Machine Learning Model): [Beyond the BET Analysis: The Surface Area Prediction of Nanoporous Materials Using a Machine Learning Method](https://doi.org/10.1021/acs.jpclett.0c01518)            
+
+
+# Bugs
+
+If you encounter any problem during using ***SESAMI-PyPi***, please email ```sxmzhaogb@gmail.com```.                 
+             
+                                                          
+**Group:**   [Molecular Thermodynamics & Advance Processes Laboratory](https://sites.google.com/view/mtap-lab)                                
