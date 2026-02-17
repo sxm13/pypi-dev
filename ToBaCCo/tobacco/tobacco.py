@@ -1,5 +1,9 @@
 from __future__ import print_function
 
+import os
+import sys
+sys.path.append(os.path.dirname(__file__))
+
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="tobacco-mof",
-    version="4.0.0",
+    version="4.0.1",
     packages=find_packages(),
     description="Topologically Based Crystal Constructor (ToBaCCo)",
     author="Guobin Zhao",
