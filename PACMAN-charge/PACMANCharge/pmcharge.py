@@ -652,8 +652,7 @@ def Energy(cif_file):
     print(f"CIF Name: {cif_file}")
 
     try:
-        struc = read(cif_file)
-        crystal_data = CIF2json(struc,cif_file)
+        crystal_data = CIF2json(cif_file)
         pos=pre4pre(cif_file)
         num_atom = n_atom(cif_file)
 

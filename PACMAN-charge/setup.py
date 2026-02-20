@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="PACMAN-charge",
-    version="1.3.9",
+    version="1.4.0",
     packages=find_packages(),
     description="Partial Atomic Charges for Porous Materials based on Graph Convolutional Neural Network (PACMAN)",
     author="Guobin Zhao",
