@@ -639,8 +639,8 @@ def Energy(cif_file):
     pbe_nor_name = package_directory+"pbe.pkl"
     pbe_model_name = package_directory+"pbe.pth"
 
-    bandgap_nor_name = package_directory+"pbe.pkl"
-    bandgap_model_name = package_directory+"pbe.pth"
+    bandgap_nor_name = package_directory+"bandgap.pkl"
+    bandgap_model_name = package_directory+"bandgap.pth"
 
     with open(pbe_nor_name, 'rb') as f:
         pbe_nor = pickle.load(f)
