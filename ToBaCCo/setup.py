@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="tobacco-mof",
-    version="4.0.2",
+    version="4.0.3",
     packages=find_packages(),
     description="Topologically Based Crystal Constructor (ToBaCCo)",
     author="Guobin Zhao",
@@ -17,11 +17,11 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     install_requires=[
-        "numpy",
+        "numpy<2.0.0",
+        "scipy<1.13.0",
         "ase",
         "networkx",
-        "scipy",
-        "gemmi"
+        "gemmi",
         "tqdm"
     ],
 )
