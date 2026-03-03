@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="tobacco-mof",
+    name="tobacco_mof",
     version="4.0.3",
     packages=find_packages(),
     description="Topologically Based Crystal Constructor (ToBaCCo)",

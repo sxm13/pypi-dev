@@ -1,3 +1,32 @@
+Metadata-Version: 2.4
+Name: tobacco_mof
+Version: 4.0.3
+Summary: Topologically Based Crystal Constructor (ToBaCCo)
+Home-page: https://github.com/sxm13/pypi-dev/tree/main/ToBaCCo
+Author: Guobin Zhao
+Author-email: sxmzhaogb@gmai.com
+License: MIT
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy<2.0.0
+Requires-Dist: scipy<1.13.0
+Requires-Dist: ase
+Requires-Dist: networkx
+Requires-Dist: gemmi
+Requires-Dist: tqdm
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary
+
 <h1 align="center">ToBaCCo MOF</h1>
 
 <h4 align="center">
