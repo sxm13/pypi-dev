@@ -5,7 +5,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/Chung-Research-Group/MOFClassifier?logo=github&logoColor=white&label=Repo%20Size)
 [![PyPI](https://img.shields.io/pypi/v/MOFClassifier?logo=pypi&logoColor=white)](https://pypi.org/project/MOFClassifier?logo=pypi&logoColor=white)
 [![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)
-[![GitHub license](https://img.shields.io/github/license/Chung-Research-Group/MOFClassifier.svg)](https://github.com/mtap-research/MOFClassifier/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Chung-Research-Group/MOFClassifier.svg)](https://github.com/sxm13/pypi-dev/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Chung-Research-Group/MOFClassifier.svg)](https://GitHub.com/Chung-Research-Group/MOFClassifier/issues/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15654431.svg)](https://doi.org/10.5281/zenodo.15654431)
                                                                                                                                                                                                      
