@@ -11,8 +11,8 @@
 ```python    
 from tobacco import run_tobacco
 
-node = "./database/example/nodes/examplecif"
-edge = "./database/example/edges/examplecif"
+node = "./database/example/nodes/example.cif"
+edge = "./database/example/edges/example.cif"
 template = "./database/example/templates/example.cif"
 
 run_tobacco(template, [node], [edge], save_path)
