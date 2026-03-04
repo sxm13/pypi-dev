@@ -11,7 +11,7 @@ A **P**artial **A**tomic **C**harge Predicter for Porous **Ma**terials based on 
 
 # Usage
 
-```sh      
+```python      
 from PACMANCharge import pmcharge
 pmcharge.predict(cif_file="./test/Cu-BTC.cif",charge_type="DDEC6",digits=6,atom_type=True,neutral=True,keep_connect=True)
 pmcharge.Energy(cif_file="./test/Cu-BTC.cif")
