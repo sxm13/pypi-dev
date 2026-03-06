@@ -5,10 +5,27 @@ import random
 from ase.geometry import cellpar_to_cell
 
 
-def metric_tensor(l):
-	cell = cellpar_to_cell(l)
-	Z = cell @ cell.T
-	return Z
+#def metric_tensor(l):
+#	cell = cellpar_to_cell(l)
+#	Z = cell @ cell.T
+#	return Z
+
+def metric_tensor(P):
+    import numpy as np
+    from ase.geometry.cell import cellpar_to_cell
+    l = list(P[:6])
+    for i in [3, 4, 5]:
+        l[i] = float(np.clip(l[i], 15.0, 165.0))
+    import math
+    ca = math.cos(math.radians(l[3]))
+    cb = math.cos(math.radians(l[4]))
+    cg = math.cos(math.radians(l[5]))
+    cz_sqr = 1.0 - ca*ca - cb*cb - cg*cg + 2.0*ca*cb*cg
+    if cz_sqr < 1e-6:
+        l[3], l[4], l[5] = 90.0, 90.0, 90.0
+    cell = cellpar_to_cell(l)
+    G = np.dot(cell, cell.T)
+    return G
 
 def objective(V, ncra, ncca, Alpha, ne, nv, Bstar_inv, SBU_IP):
 	
