@@ -320,118 +320,136 @@ def write_cif(placed_all, fixed_bonds, scaled_params, sc_unit_cell, opath, wrap_
 
 def read4merge(filename):
 
-	lattice, _ = bb2lattices(filename)
-	a, b, c, alpha, beta, gamma = lattice
+    lattice, _ = bb2lattices(filename)
+    a, b, c, alpha, beta, gamma = lattice
 
-	names = bb2labels(filename)
+    names = bb2labels(filename)
 
-	_, fcoords_ori = bb2coords(filename)
-	fcoords = []
-	for fcoord in fcoords_ori:
-		fvec = np.array([np.round(float(v),8) for v in fcoord])
-		for dim in range(len(fvec)):
-			if fvec[dim] < 0.0:
-				fvec[dim] += 1.0
-			elif fvec[dim] > 1.0:
-				fvec[dim] -= 1.0
+    _, fcoords_ori = bb2coords(filename)
+    fcoords = []
+    for fcoord in fcoords_ori:
+        fvec = np.array([np.round(float(v), 8) for v in fcoord])
+        for dim in range(len(fvec)):
+            if fvec[dim] < 0.0:
+                fvec[dim] += 1.0
+            elif fvec[dim] > 1.0:
+                fvec[dim] -= 1.0
+        fcoords.append(fvec)
+    fcoords = np.asarray(fcoords)
 
-		fcoords.append(fvec)
-	fcoords = np.asarray(fcoords)
+    bond_label1_loop, bond_label2_loop, bond_dis_loop, bond_sym_loop, bond_type_loop = bb2bonds(filename)
+    bonds = []
+    for idx in range(len(bond_type_loop)):
+        bonds.append((
+            bond_label1_loop[idx],
+            bond_label2_loop[idx],
+            bond_dis_loop[idx],
+            bond_sym_loop[idx],
+            bond_type_loop[idx]
+        ))
 
-	bond_label1_loop, bond_label2_loop, bond_dis_loop, bond_sym_loop, bond_type_loop = bb2bonds(filename)
-	bonds = []
-	for idx in range(len(bond_type_loop)):
-		bonds.append((  bond_label1_loop[idx],
-						bond_label2_loop[idx],
-						bond_dis_loop[idx],
-						bond_sym_loop[idx],
-						bond_type_loop[idx]))
-	
-	return names, fcoords, bonds, (a,b,c,alpha,beta,gamma)
+    return names, fcoords, bonds, (a, b, c, alpha, beta, gamma)
+
+
+def _remap_symmetry(sym_str, shift):
+    """
+    """
+    return sym_str
+
+
+def _rename_label(name, shift, net_prefix):
+    """
+    """
+    return net_prefix + name
 
 
 def merge_catenated_cifs(comb):
-	
-	all_read = [read4merge(cif) for cif in comb]
-	natoms = [len(c[0]) for c in all_read]
-	a, b, c, alpha, beta, gamma = all_read[0][3]
-	
-	if len(set(natoms)) != 1:
-		raise ValueError('The number of atoms is not the same for the cifs:', comb)
 
-	cifname = comb[0][0:-9] + '.cif'
-	blockname = 'data_' + os.path.basename(cifname)[0:-4]
+    all_read = [read4merge(cif) for cif in comb]
+    natoms = [len(c[0]) for c in all_read]
+    a, b, c, alpha, beta, gamma = all_read[0][3]
 
-	doc = gemmi.cif.Document()
-	block = doc.add_new_block(blockname)
+    # 
+    if len(set(natoms)) != 1:
+        print(f'WARNING: atom counts differ across catenated cifs: {list(zip(comb, natoms))}')
+        print('Skipping this combination...')
+        return
 
-	block.set_pair('_audit_creation_date', datetime.datetime.today().strftime('%Y-%m-%d'))
-	block.set_pair('_audit_creation_method', 'tobacco_3.0')
-	block.set_pair("_symmetry_space_group_name_H-M", 'P1')
-	block.set_pair('_symmetry_Int_Tables_number', '1')
-	block.set_pair('_symmetry_cell_setting', 'triclinic')
+    n0 = natoms[0]
 
-	sym_loop = block.init_loop('_symmetry_equiv_pos_as_xyz', ['_symmetry_equiv_pos_as_xyz'])
-	sym_loop.add_row(['x,y,z'])
+    # 
+    cifname = re.sub(r'_CAT\d+\.cif$', '.cif', comb[0])
+    blockname = 'data_' + os.path.basename(cifname)[0:-4]
 
-	block.set_pair('_cell_length_a', str(a))
-	block.set_pair('_cell_length_b', str(b))
-	block.set_pair('_cell_length_c', str(c))
-	block.set_pair('_cell_angle_alpha', str(alpha))
-	block.set_pair('_cell_angle_beta', str(beta))
-	block.set_pair('_cell_angle_gamma', str(gamma))
+    doc = gemmi.cif.Document()
+    block = doc.add_new_block(blockname)
 
-	atom_loop = block.init_loop('_atom_site_label', [
-		'_atom_site_label',
-		'_atom_site_type_symbol',
-		'_atom_site_fract_x',
-		'_atom_site_fract_y',
-		'_atom_site_fract_z',
-	])
+    block.set_pair('_audit_creation_date', datetime.datetime.today().strftime('%Y-%m-%d'))
+    block.set_pair('_audit_creation_method', 'tobacco_3.0')
+    block.set_pair("_symmetry_space_group_name_H-M", 'P1')
+    block.set_pair('_symmetry_Int_Tables_number', '1')
+    block.set_pair('_symmetry_cell_setting', 'triclinic')
 
-	count = 0
-	n0 = natoms[0]
-	for cif in all_read:
-		names, fcoords, bonds, cellpar = cif
-		shift = count * n0
-		count += 1
+    sym_loop = block.init_loop('_symmetry_equiv_pos_as_xyz', ['_symmetry_equiv_pos_as_xyz'])
+    sym_loop.add_row(['x,y,z'])
 
-		new_names = [nn(name) + str(int(nl(name)) + shift) for name in names]
-		for name, coord in zip(new_names, fcoords):
-			atom_loop.add_row([
-				name,
-				nn(name),
-				f"{float(coord[0]):.8f}",
-				f"{float(coord[1]):.8f}",
-				f"{float(coord[2]):.8f}",
-			])
+    block.set_pair('_cell_length_a', str(a))
+    block.set_pair('_cell_length_b', str(b))
+    block.set_pair('_cell_length_c', str(c))
+    block.set_pair('_cell_angle_alpha', str(alpha))
+    block.set_pair('_cell_angle_beta', str(beta))
+    block.set_pair('_cell_angle_gamma', str(gamma))
 
-	bond_loop = block.init_loop('_geom_bond_atom_site_label_1', [
-		'_geom_bond_atom_site_label_1',
-		'_geom_bond_atom_site_label_2',
-		'_geom_bond_distance',
-		'_geom_bond_site_symmetry_2',
-		'_ccdc_geom_bond_type',
-	])
+    atom_loop = block.init_loop('_atom_site_label', [
+        '_atom_site_label',
+        '_atom_site_type_symbol',
+        '_atom_site_fract_x',
+        '_atom_site_fract_y',
+        '_atom_site_fract_z',
+    ])
 
-	count = 0
-	for cif in all_read:
-		names, fcoords, bonds, cellpar = cif
-		shift = count * n0
-		count += 1
+    # 
+    net_prefixes = [chr(ord('A') + i) + '_' for i in range(len(all_read))]
 
-		new_bonds = [
-			(
-				nn(b0) + str(int(nl(b0)) + shift),
-				nn(b1) + str(int(nl(b1)) + shift),
-				f"{float(dist):.3f}",
-				str(sym2),
-				str(btype),
-			)
-			for (b0, b1, dist, sym2, btype) in bonds
-		]
+    for count, cif in enumerate(all_read):
+        names, fcoords, bonds, cellpar = cif
+        prefix = net_prefixes[count]
 
-		for row in new_bonds:
-			bond_loop.add_row(list(row))
+        new_names = [_rename_label(name, 0, prefix) for name in names]
 
-	doc.write_file(cifname)
+        for name, coord in zip(new_names, fcoords):
+            atom_loop.add_row([
+                name,
+                nn(name.split('_', 1)[1]),
+                f"{float(coord[0]):.8f}",
+                f"{float(coord[1]):.8f}",
+                f"{float(coord[2]):.8f}",
+            ])
+
+    bond_loop = block.init_loop('_geom_bond_atom_site_label_1', [
+        '_geom_bond_atom_site_label_1',
+        '_geom_bond_atom_site_label_2',
+        '_geom_bond_distance',
+        '_geom_bond_site_symmetry_2',
+        '_ccdc_geom_bond_type',
+    ])
+
+    for count, cif in enumerate(all_read):           # enumerate
+        names, fcoords, bonds, cellpar = cif
+        prefix = net_prefixes[count]
+
+        new_bonds = [
+            (
+                _rename_label(b0, 0, prefix),
+                _rename_label(b1, 0, prefix),
+                f"{float(dist):.3f}",
+                _remap_symmetry(sym2, 0),            #
+                str(btype),
+            )
+            for (b0, b1, dist, sym2, btype) in bonds
+        ]
+
+        for row in new_bonds:
+            bond_loop.add_row(list(row))
+
+    doc.write_file(cifname)
