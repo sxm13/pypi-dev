@@ -1,5 +1,7 @@
 ## MOFClassifier: A Machine Learning Approach for Validating Computation-Ready Metal-Organic Frameworks
-                                                                                                                                          
+
+<img src="https://raw.githubusercontent.com/sxm13/pypi-dev/main/logos/mofclassifier.png" alt="mofclassifier logo" width="500"/>                                                                                                                                        
+
 [![Static Badge](https://img.shields.io/badge/arXiv.2506.14845v1-brightgreen?style=flat)](https://arxiv.org/abs/2506.14845)
 [![DOI](https://img.shields.io/badge/DOI-10.1021/jacs.5c10126-blue.svg)](https://pubs.acs.org/doi/10.1021/jacs.5c10126)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Chung-Research-Group/MOFClassifier?logo=github&logoColor=white&label=Repo%20Size)
