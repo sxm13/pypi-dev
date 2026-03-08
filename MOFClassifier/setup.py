@@ -2,8 +2,8 @@ import requests
 from setuptools import setup, find_packages
 
 setup(
-        name="MOFClassifier",
-        version="0.1.1",
+        name="mofclassifier",
+        version="0.1.2",
         packages=find_packages(),
         description="A Machine Learning Approach for Validating Computation-Ready Metal-Organic Frameworks",
         author="Guobin Zhao",
