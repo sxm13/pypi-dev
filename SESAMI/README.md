@@ -4,7 +4,10 @@
 
 </h4>              
 
-**SESAMI**: 
+
+<div align="center">
+        <img src="https://raw.githubusercontent.com/sxm13/pypi-dev/main/logos/sesami.png" alt="SESAMI logo" width="500"/>
+</div> 
 
 [![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads) [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/sxm13/pypi-dev/blob/main/LICENSE)![Build Status](https://img.shields.io/badge/build-passing-brightgreen) [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sxmzhaogb@gmail.com) [![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)]() [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)]()          
 
