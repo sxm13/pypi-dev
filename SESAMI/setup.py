@@ -2,8 +2,8 @@ import requests
 from setuptools import setup, find_packages
 
 setup(
-    name="SESAMI",
-    version="2.8",
+    name="sesami",
+    version="2.9",
     packages=find_packages(),
     description="Characterization Tools for Porous Materials Using Nitrogen/Argon Adsorption",
     author="Guobin Zhao",
