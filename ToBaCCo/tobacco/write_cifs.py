@@ -282,8 +282,8 @@ def write_cif(placed_all, fixed_bonds, scaled_params, sc_unit_cell, opath, wrap_
     block.set_pair("_cell_angle_beta", str(sc_beta))
     block.set_pair("_cell_angle_gamma", str(sc_gamma))
 
-    sym_loop = block.init_loop("_symmetry_equiv_pos_as_xyz", ["_symmetry_equiv_pos_as_xyz"])
-    sym_loop.add_row(["x,y,z"])
+    sym_loop = block.init_loop("_symmetry_equiv_pos_site_id", ["_symmetry_equiv_pos_site_id","_symmetry_equiv_pos_as_xyz"])
+    sym_loop.add_row(["1", "x,y,z"])
 
     atom_loop = block.init_loop("_atom_site_label", [
         "_atom_site_label",
