@@ -1,0 +1,17 @@
+name: gtsr
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.9
+  - zeopp-lsmo
+  - molSimplify==1.8.0
+  - pip
+  - pip:
+      - ase>=3.19
+      - numpy>=1.21
+      - pymatgen>=2018.6.11
+      - scikit-learn>=1.0
+      - torch>=1.12
+      - rdkit
+      - networkx

@@ -1,0 +1,1 @@
+"""Bundled GTsR model checkpoints."""
