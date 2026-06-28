@@ -94,6 +94,7 @@ class GTsRunner:
         self.device = self._resolve_device(device)
         self.stability_model = None
         self.stability_imputer = None
+        self.stability_top_idx = None
 
         if checkpoint_name == "stability":
             self.checkpoint_path = self._resolve_stability_model()
@@ -255,9 +256,11 @@ class GTsRunner:
         if isinstance(saved_model, dict):
             self.stability_model = saved_model["model"]
             self.stability_imputer = saved_model.get("imputer")
+            self.stability_top_idx = saved_model.get("top_idx")
         else:
             self.stability_model = saved_model
             self.stability_imputer = None
+            self.stability_top_idx = None
 
         self._make_stability_model_compatible()
 
@@ -313,5 +316,7 @@ class GTsRunner:
             self._load_stability_model()
         if self.stability_imputer is not None:
             feature_batch = self.stability_imputer.transform(feature_batch)
+        if self.stability_top_idx is not None:
+            feature_batch = feature_batch[:, self.stability_top_idx]
 
         return self.stability_model.predict(feature_batch)[0]
