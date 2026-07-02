@@ -38,7 +38,7 @@ class DevelopWithConda(develop):
 
 setup(
     name="gtsr",
-    version="0.0.4",
+    version="0.0.5",
     description="Graph neural network tool for solvent removal from MOF structures",
     long_description=(ROOT / "README.md").read_text(encoding="utf-8"),
     long_description_content_type="text/markdown",
