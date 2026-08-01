@@ -99,10 +99,17 @@ else:
 Update the following entry when the associated publication becomes available:
 
 ```bibtex
-@article{gtsr-xyl-group,
-  title   = {GTSR: A GNN Based Tool for Solvent Removal from MOF with Stability Check},
-  author  = {Liang, Kairui and Zhao, Guobin and Li, Xiao-Yan},
-  year    = {2026}
+@article{
+doi:10.26434/chemrxiv.15006593/v1,
+author = {Guobin Zhao  and Kairui Liang  and Xiao-Yan Li },
+title = {Stability-Aware Structural Cleaning of Metal–Organic Frameworks for Reliable Molecular Simulation and High-Throughput Screening},
+journal = {ChemRxiv},
+volume = {2026},
+number = {0727},
+year = {2026},
+doi = {10.26434/chemrxiv.15006593/v1},
+URL = {https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006593/v1},
+eprint = {https://chemrxiv.org/doi/pdf/10.26434/chemrxiv.15006593/v1},
 }
 ```
 
