@@ -3,7 +3,6 @@
 </div> 
                                                              
 [![Static Badge](https://img.shields.io/badge/chemrxiv-2024.nvmnr.v2-brightgreen?style=flat)](https://doi.org/10.26434/chemrxiv-2024-nvmnr-v2)
-[![Docs](https://img.shields.io/badge/API-Docs-blue?logo=readthedocs&logoColor=white)](https://coremof-tools.readthedocs.io/en/latest/index.html#)
 [![PyPI](https://img.shields.io/pypi/v/CoREMOF-tools?logo=pypi&logoColor=white)](https://pypi.org/project/CoREMOF-tools?logo=pypi&logoColor=white)
 [![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)
 [![Downloads](https://pepy.tech/badge/CoREMOF_tools)](https://pepy.tech/project/CoREMOF_tools)
