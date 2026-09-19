@@ -29,24 +29,11 @@ pmcharge.Energy(cif_file="./test/Cu-BTC.cif")
 * keep_connect (default: True): retain the atomic and connection information (such as _atom_site_adp_type, bond) for the structure.                                                        
 
 # Website & Zenodo
-PACMAN-APP[link](https://pacman-charge-mtap.streamlit.app/)       
-github repository[link](https://github.com/Chung-Research-Group/PACMAN-charge)                                                                    
+PACMAN-APP[link](https://pacman-charge-mtap.streamlit.app/)                                                                          
 
 # Reference
 ```
-@article{doi : 10.1021/acs.jctc.4c00434 ,
-        author = {Zhao, Guobin and Chung, Yongchul G.},
-        title = {PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials Based on Crystal Graph Convolution Networks},
-        journal = {Journal of Chemical Theory and Computation},
-        volume = {20},
-        number = {12},
-        pages = {5368-5380},
-        year = {2024},
-        doi = {10.1021/acs.jctc.4c00434},
-        note ={PMID: 38822793},
-        URL = {https://doi.org/10.1021/acs.jctc.4c00434},
-        eprint = {https://doi.org/10.1021/acs.jctc.4c00434}
-        }
+PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials Based on Crystal Graph Convolution Networks. Journal of Chemical Theory and Computation, 20 (12), 5368-5380, 2024. 10.1021/acs.jctc.4c00434
 ```
 
 # Bugs
