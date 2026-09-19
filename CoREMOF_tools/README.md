@@ -27,11 +27,7 @@ This API includes tools developed to collect, curate, and classify Computation-R
 a. You need to install the [CSD software and python API](https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html) before downloading the full CoRE MOF database.                                                            
 b. For using CoREMOF.calculation.Zeopp, you need to input `conda install -c conda-forge zeopp-lsmo` to install Zeo++.   
 c. For using CoREMOF.get_mofid, you need to install MOFid following the [manual](https://snurr-group.github.io/mofid/compiling/#installation).                    
-d. For using CoREMOF.mof_check, you need to install MOFChecker by input `pip install git+https://github.com/sxm13/mofchecker_2.0.git@main`. 
-
-#### Examples                                                                                     
-Available at [Github](https://github.com/mtap-research/CoRE-MOF-Tools/tree/main/tests/examples) and [CoRE MOF Website](https://mof-db.pusan.ac.kr/API) to view examples.                         
-                            
+d. For using CoREMOF.mof_check, you need to install MOFChecker by input `pip install git+https://github.com/sxm13/mofchecker_2.0.git@main`.                                      
 
 #### Citation                                          
 - [CoRE MOF](https://doi.org/10.1016/j.matt.2025.102140): Zhao G, Brabson L, Chheda S, Huang J, Kim H, Liu K, et al. CoRE MOF DB: a curated experimental metal-organic framework database with machine-learned properties for integrated material-process screening. Matter, 8 (2025), 102140.                        
