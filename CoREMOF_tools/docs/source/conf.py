@@ -10,7 +10,6 @@ import os, sys
 sys.path.insert(0, os.path.abspath('../..')) 
 
 project = 'CoREMOF'
-copyright = '2025, MTAP @ Pusan National University'
 author = 'Guobin Zhao'
 release = '0.3.2'
 
