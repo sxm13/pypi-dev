@@ -7,7 +7,7 @@ from typing import Any
 import numpy as np
 import torch
 
-try:
+if __package__:
     from .src.GCN import SolventAtomClassifier
     from .src.cif_utils import (
         PoreDiameter,
@@ -25,7 +25,7 @@ try:
     )
     from .src.data import GaussianDistance
     from .src.utils import load_checkpoint
-except ImportError:
+else:  # running runner.py directly as a script
     from src.GCN import SolventAtomClassifier
     from src.cif_utils import (
         PoreDiameter,
