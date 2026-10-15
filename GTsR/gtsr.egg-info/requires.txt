@@ -1,0 +1,8 @@
+ase>=3.19
+numpy>=1.21
+pymatgen>=2018.6.11
+scikit-learn>=1.0
+torch>=1.12
+molSimplify==1.8.0
+rdkit
+networkx

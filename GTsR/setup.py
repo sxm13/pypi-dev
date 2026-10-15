@@ -19,9 +19,19 @@ def install_conda_dependency():
         )
         return
 
-    subprocess.check_call(
-        [conda_executable, "install", "-y", "conda-forge::zeopp-lsmo"]
-    )
+    if shutil.which("network"):
+        # Zeo++ is already available; nothing to do.
+        return
+
+    try:
+        subprocess.check_call(
+            [conda_executable, "install", "-y", "conda-forge::zeopp-lsmo"]
+        )
+    except (subprocess.CalledProcessError, OSError) as exc:
+        print(
+            f"Warning: automatic installation of zeopp-lsmo failed ({exc}). "
+            "Please run 'conda install -c conda-forge zeopp-lsmo' manually."
+        )
 
 
 class InstallWithConda(install):

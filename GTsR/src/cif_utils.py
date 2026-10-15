@@ -260,8 +260,12 @@ def RACs(cif_path):
     tmp_dir = Path(tempfile.mkdtemp(prefix="gtsr-rac-"))
     try:
         name = Path(cif_path).stem
+        # Rewrite the CIF as a clean P1 file so molSimplify's two CIF readers
+        # (readcif and import_from_cif) see the same atom list.
+        p1_cif = tmp_dir / f"{name}.cif"
+        Structure.from_file(str(cif_path)).to(filename=str(p1_cif), fmt="cif")
         full_names, full_descriptors = get_MOF_descriptors(
-            cif_path,
+            str(p1_cif),
             3,
             path=str(tmp_dir),
             xyz_path=str(tmp_dir / f"{name}.xyz"),
